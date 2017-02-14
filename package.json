@@ -8,7 +8,7 @@
   "license": "MIT",
   "scripts": {
     "lint": "eslint --ext .jsx,.js .",
-    "test": "nyc mocha --no-timeouts -R test"
+    "test": "mocha --no-timeouts test"
   },
   "dependencies": {
     "fivebeans": "1.5.0",
