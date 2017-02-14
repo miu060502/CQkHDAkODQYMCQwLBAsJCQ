@@ -51,12 +51,12 @@ var job1 = {
 var failedjob1 = {
 	type: 'j_type',
 	payload: {
-		from: 'USD',
-		to: 'HKD'
+		from: 'XXX',
+		to: 'YYY'
 	}
 };
 
-describe('ConsumerWorker', function()
+describe('ConsumerWorker fail case', function()
 {
 	var client, consumer, worker, testhandler;
 
@@ -118,7 +118,7 @@ describe('ConsumerWorker', function()
 
 		it('#put() submits a job', function(done)
 		{
-			client.put(0, 0, 60, JSON.stringify(job1), function(err, jobid)
+			client.put(0, 0, 60, JSON.stringify(failedjob1), function(err, jobid)
 			{
 				demand(err).not.exist();
 				jobid.must.exist();
@@ -152,7 +152,7 @@ describe('ConsumerWorker', function()
 						self.dao.collection('Forex').count(
 							(err, c) => {
 								done();
-								c.must.be.at.least(10);
+								c.must.be.equal(0);
 								console.log(c);
 							}
 						)
@@ -168,10 +168,10 @@ describe('ConsumerWorker', function()
 				{
 					demand(msg).exist();
 					//console.log(msg);
-					
 				}
 			).stop();
 			done();
+
 		});
 	});
 

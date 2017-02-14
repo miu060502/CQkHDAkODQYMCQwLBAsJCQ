@@ -19,7 +19,8 @@
     "yargs": "~5.0.0",
     "co": "4.6.0",
 	"bluebird": "3.4.7",
-	"request": "2.79.0"
+	"request": "2.79.0",
+	"mongodb": "2.2.22"
   },
   "contributors": [
     {
